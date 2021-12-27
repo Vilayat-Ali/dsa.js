@@ -1,0 +1,27 @@
+{
+  "name": "dsa.js",
+  "version": "1.0.0",
+  "description": "A JS package for implementation of Data Structures with a pack of most  useful algorithms",
+  "main": "dist/main.js",
+  "types": "dist/global.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "data-structures",
+    "algorithms",
+    "data",
+    "linked-lists",
+    "trees",
+    "ML"
+  ],
+  "author": "Syed Vilayat Ali Rizvi",
+  "license": "ISC",
+  "dependencies": {
+    "@types/chalk": "^2.2.0",
+    "chalk": "^5.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^2.7.2"
+  }
+}
