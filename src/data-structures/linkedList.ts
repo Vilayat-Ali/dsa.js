@@ -90,25 +90,46 @@ export default class linkedList<T>{
                 throw new RangeError();
             }else{
                 var start = this.head;
-                if(index === 0){
+                if(index === 0 && this.size === 1){
                     this.head = null; // deleting element 
                     this.size--;
-                }else if(index !==0 && index === this.size-1){ // working
+                }else if(index !==0 && index === this.size-1){ // at last index
                     for(var i=0; i<=(index); i++){
                         start = start.nextNode;
                     }
                     start.nextNode = null;
-                }else{ // not working/ issues
-                    for(var i=0; i<=(index-1); i++){
-                        start = start.nextNode;
+                    this.size--;
+                }else{ // at middle of the linked lists
+                    if(index === 0){
+                        this.head = start.nextNode.nextNode;
+                    }else{
+                        for(var i=0; i<index-1; i++){
+                            start = start.nextNode;
+                        }
+                        start.nextNode = start.nextNode.nextNode;
+                        this.size--;
                     }
-                    start.nextNode = null;
                 }
             }
         }catch(e){
             if(e instanceof RangeError){
                 console.log(`Range Error: ${index} is out of range.`);
             }
+        }
+    }
+    elementAtIndex(index: number){
+        if(index<0 || index>=this.size){
+            console.log(`Range Error: ${index} is out of range`);
+        }else{
+            var start = this.head;
+            for(var i=0; i<index; i++){
+                if(start.nextNode === null){
+                    break;
+                }
+                start = start.nextNode;
+            }
+            const requiredElement = start.data; 
+            return requiredElement;
         }
     }
     showList(): T[]{
@@ -130,18 +151,3 @@ export default class linkedList<T>{
         return arr;
     }
 }
-
-// testing 
-const obj = new linkedList<string>();
-obj.insertAtEnd('d');
-obj.insertAtEnd('e');
-obj.insertAtIndex('p', 1);
-obj.insertAtEnd('z');
-obj.insertAtIndex('t', 2);
-obj.insertAtEnd('w');
-console.log(obj.showList());
-console.log(obj.size);
-obj.removeAtIndex(4);
-obj.removeAtIndex(3);
-obj.removeAtIndex(2);
-console.log(obj.showList());
