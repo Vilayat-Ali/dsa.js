@@ -2,7 +2,7 @@
   "name": "dsa.js",
   "version": "1.0.0",
   "description": "A handy javascript package for easy implementation of data structures and algorithms.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -p ."

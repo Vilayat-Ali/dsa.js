@@ -101,7 +101,8 @@ export default class linkedList<T>{
                     this.size--;
                 }else{ // at middle of the linked lists
                     if(index === 0){
-                        this.head = start.nextNode.nextNode;
+                        this.head = start.nextNode;
+                        this.size--;
                     }else{
                         for(var i=0; i<index-1; i++){
                             start = start.nextNode;
