@@ -1,7 +1,7 @@
-import linkedList from "./linkedList";
+import linkedList from "../linked-list/linkedList";
 
 // implementing Stack data structure using linked lists 
-export default class Stack<T>{
+export default class linkedStack<T>{
     top: any;
     size: number;
     list: linkedList<T>;

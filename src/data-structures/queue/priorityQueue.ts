@@ -1,21 +1,19 @@
-import linkedList from "./linkedList";
+import linkedList from "../linked-list/linkedList";
 
 // implementing queue data structure using linked lists 
-export default class linearQueue<T>{
+export default class priorityQueue<T>{
     front: any;
-    rear: any;
+    rear: any; 
     size: number;
     list: linkedList<T>;
     constructor(){
         this.front = null;
         this.rear = null;
-        this.size = 0;
+        this.size = 0; 
         this.list = new linkedList<T>();
     }
-    enqueue(data: T){
-        this.list.insertAtEnd(data);
-        this.rear = this.list.tail;
-        this.size++;
+    enqueue(data: T, priority: number){
+
     }
     dequeue(){
         this.list.removeAtIndex(0);
@@ -29,4 +27,4 @@ export default class linearQueue<T>{
         const arr = this.list.showList();
         return arr;
     }
-}
+} 
