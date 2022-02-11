@@ -1,30 +1,59 @@
-import linkedList from "../linked-list/linkedList";
+class node<T>{
+    data: T; 
+    priority:number;
+    leftChild: unknown;
+    rightChild: unknown;
+    constructor(data:T, priority:number){
+        this.data = data;
+        this.priority = priority;
+        this.leftChild = null;
+        this.rightChild = null;
+    }
+}
 
-// implementing queue data structure using linked lists 
 export default class priorityQueue<T>{
-    front: any;
-    rear: any; 
     size: number;
-    list: linkedList<T>;
+    front: any;
+    rear: any;
+    maxPriority: number|null;
+    minPriority: number|null;
     constructor(){
+        this.size = 0; 
         this.front = null;
         this.rear = null;
-        this.size = 0; 
-        this.list = new linkedList<T>();
+        this.maxPriority = null;
+        this.minPriority = null;
     }
-    enqueue(data: T, priority: number){
+    enqueue(data:T, priority:number){
+        // allocating a new node 
+        var newNode = new node<T>(data, priority);
 
+        // Enquing the queue element 
+        var start = this.front;
+        if(start === null){
+            this.front = newNode;
+            this.rear = newNode;
+            this.maxPriority = priority;
+            this.minPriority = priority;
+            this.size++;
+        }
+        else{
+            while(start.rigthNode !== null){
+                if(start.priority > priority){
+                    start = start.rigthNode;
+                    var temp = start;
+                }else{
+                    newNode.leftChild = start.leftChild;
+                    newNode.rightChild = temp.rightChild;
+                    this.size++;
+                }
+            }
+        }
     }
-    dequeue(){
-        this.list.removeAtIndex(0);
-        this.front = this.list.head;
-        this.size--;
+    showQueue():T[]{
+        var queue: T[] = [];
+        var start = this.front;
+        return queue;
     }
-    elementAtIndex(index: number){
-        return this.list.elementAtIndex(index);
-    }
-    showQueue(){
-        const arr = this.list.showList();
-        return arr;
-    }
-} 
+}
+

@@ -61,14 +61,14 @@ export default class linkedList<T>{
         }
        }catch(err){
         if (err instanceof RangeError){
-            console.log(`Range Error: ${index} is out of range.`);
+            throw `Range Error: ${index} is out of range.`;
         }
        }
     }
     removeAtEnd(){
         var start = this.head;
         if(this.size === 0){
-            console.log('Underflow: Cannot delete from empty linked list.')
+            throw 'Underflow: Cannot delete from empty linked list.'
         }else{
             if(this.size === 1){
                 this.head = null;
